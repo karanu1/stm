@@ -17,7 +17,7 @@ spring:
     # url: jdbc:mysql://127.0.0.1:3306/sms?serverTimezone=UTC&characterEncoding=UTF-8
 
     driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-    url: jdbc:log4jdbc:mysql://127.0.0.1:3306/sms?serverTimezone=UTC&characterEncoding=UTF-8
+    url: jdbc:log4jdbc:mysql://110.9.102.136:3333/sms?serverTimezone=UTC&characterEncoding=UTF-8
     username: sms_user
     password: 1523332
 
