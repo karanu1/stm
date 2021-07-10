@@ -1,5 +1,7 @@
 package com.scell.stm.controller;
 
+import com.scell.stm.dao.UserDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,9 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ViewLoadController {
 
+    @Autowired
+    UserDao userDao;
+
     @GetMapping("/main")
     public String index(Model model){
-        System.out.println("여기로 들어오냐 마냐");
         return "view/main";
     }
 
@@ -20,6 +24,7 @@ public class ViewLoadController {
 
     @GetMapping("/member")
     public String member(Model model){
+        model.addAttribute("member", userDao.selectUser());
         return "view/member";
     }
 

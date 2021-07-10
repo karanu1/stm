@@ -26,6 +26,11 @@ public class KakaoContorller {
     @RequestMapping(value ="/login")
     public ModelAndView login(@RequestParam("code") String code, HttpSession session){
         ModelAndView mav = new ModelAndView();
+
+        if(session.getAttribute("userId") != null){
+            mav.setViewName("view/index");
+            return mav;
+        }
         // 1.번 인증코드 전달
         String access_token = kakaoApi.getAccessToken(code);
         // 2.번 인증코드로 토큰 전달
@@ -40,7 +45,7 @@ public class KakaoContorller {
         mav.setViewName("view/index");
         System.out.println("mav : " + mav);
 
-        UserDto userDto = userService.selectUser(userInfo);
+        UserDto userDto = userService.signupUser(userInfo);
         return mav;
     }
 

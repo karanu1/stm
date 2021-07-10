@@ -14,9 +14,9 @@ public class UserServiceImpl implements UserService {
     UserDao dao;
 
     @Override
-    public UserDto selectUser(HashMap<String, Object> userInfo) {
+    public UserDto signupUser(HashMap<String, Object> userInfo) {
         UserDto userDto = new UserDto();
-        UserDto dto = dao.selectUser(userInfo.get("email").toString());
+        UserDto dto = dao.selectUserInfo(userInfo.get("email").toString());
         try{
             if(dto == null){ //이러면 회원가입 해야됨!
                 userDto.setEmail(userInfo.get("email").toString());
