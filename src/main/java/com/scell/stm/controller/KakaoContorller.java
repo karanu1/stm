@@ -1,22 +1,20 @@
 package com.scell.stm.controller;
 
 import com.scell.stm.KakaoAPI;
-import com.scell.stm.dao.UserDao;
 import com.scell.stm.dto.UserDto;
 import com.scell.stm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 
 
-@RestController
+@Controller
 public class KakaoContorller {
     @Autowired
     UserService userService;
@@ -24,12 +22,12 @@ public class KakaoContorller {
     KakaoAPI kakaoApi = new KakaoAPI();
 
     @RequestMapping(value ="/login")
-    public ModelAndView login(@RequestParam("code") String code, HttpSession session){
+    public String login(@RequestParam("code") String code, HttpSession session){
         ModelAndView mav = new ModelAndView();
 
         if(session.getAttribute("userId") != null){
-            mav.setViewName("view/index");
-            return mav;
+            mav.setViewName("main");
+            //return mav;
         }
         // 1.번 인증코드 전달
         String access_token = kakaoApi.getAccessToken(code);
@@ -42,11 +40,11 @@ public class KakaoContorller {
             session.setAttribute("access_token", access_token);
         }
         mav.addObject("userId", userInfo.get("email"));
-        mav.setViewName("view/index");
+        mav.setViewName("main");
         System.out.println("mav : " + mav);
 
         UserDto userDto = userService.signupUser(userInfo);
-        return mav;
+        return "redirect:/main";
     }
 
     @RequestMapping(value = "/logout")

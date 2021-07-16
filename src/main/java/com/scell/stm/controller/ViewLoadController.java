@@ -22,6 +22,11 @@ public class ViewLoadController {
         return "register";
     }
 
+    @GetMapping("dashboard")
+    public String dashboard(Model model) {
+        return "view/dashboard";
+    }
+
     @GetMapping("/member")
     public String member(Model model){
         model.addAttribute("member", userDao.selectUser());
@@ -31,6 +36,11 @@ public class ViewLoadController {
     @GetMapping("/resource")
     public String resource(Model model){
         return "view/resource";
+    }
+
+    @GetMapping("/resourceEdit")
+    public String resourceEdit(Model model) {
+        return "view/resourceEdit";
     }
 
     @GetMapping("/gallery")
