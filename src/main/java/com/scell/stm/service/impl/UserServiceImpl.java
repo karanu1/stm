@@ -6,6 +6,7 @@ import com.scell.stm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 
 @Service
@@ -14,7 +15,7 @@ public class UserServiceImpl implements UserService {
     UserDao dao;
 
     @Override
-    public UserDto signupUser(HashMap<String, Object> userInfo) {
+    public UserDto signupUser(HashMap<String, Object> userInfo, HttpSession session) {
         UserDto userDto = new UserDto();
         UserDto dto = dao.selectUserInfo(userInfo.get("email").toString());
         try{
@@ -28,9 +29,11 @@ public class UserServiceImpl implements UserService {
                 userDto.setAuth("00000");
                 userDto.setType("00000");
                 dao.insertUser(userDto);
+                session.setAttribute("userInfo", userDto);
             }
             else{ //이미 회원가입함
                 System.out.println("히히!현현!");
+                session.setAttribute("userInfo", dto);
             }
             System.out.println(userDto);
         } catch(Exception e) {

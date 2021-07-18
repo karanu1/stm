@@ -43,7 +43,7 @@ public class KakaoContorller {
         mav.setViewName("main");
         System.out.println("mav : " + mav);
 
-        UserDto userDto = userService.signupUser(userInfo);
+        UserDto userDto = userService.signupUser(userInfo, session);
         return "redirect:/main";
     }
 
