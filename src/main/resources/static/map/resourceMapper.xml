@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scell.stm.dao.ResourceDao">
+    <insert id="depositResource" parameterType="com.scell.stm.dto.ResourceDto">
+        insert into resource (
+            use_type,
+            linked_id,
+            resource_change
+        ) values (
+            #{useType},
+            #{linkedId},
+            #{resourceChange}
+        )
+
+    </insert>
+
+    <select id="selectResource" resultType="com.scell.stm.dto.ResourceDto" parameterType="int">
+        select
+            *
+        from
+            resource
+        where
+            linked_id = #{value}
+    </select>
+</mapper>

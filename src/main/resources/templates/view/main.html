@@ -49,8 +49,13 @@
 </body>
 </html>
 
-<script>
+<script th:inline="javascript">
     $(document).ready(function(){
+        /*<![CDATA[*/
+        var userInfo = (/*[[ ${userInfo} ]]*/);
+        console.log(userInfo);
+        console.log("세션 출력");
+        /*]]*/
         customHref("/dashboard");
     });
 

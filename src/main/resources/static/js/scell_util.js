@@ -17,6 +17,25 @@ var customHref = function(href, target){
         console.log(c);
     });
 }
+var duesDeposit = function(){
+    if(confirm("월 회비를 입금하셨습니까?")) {
+        $.ajax({
+            type    : "post",
+            url     : "/deposit",
+            data    : {data : "postData"},
+            cache : false,
+            contentType : false,
+        }).done((data) => {
+            console.log(data);
+        }).fail((a,b,c) => {
+            console.log(a);
+            console.log(b);
+            console.log(c);
+        })
+    } else {
+
+    }
+}
 
 var registration = function(){
 

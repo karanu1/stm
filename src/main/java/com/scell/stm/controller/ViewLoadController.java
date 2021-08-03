@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class ViewLoadController {
 
@@ -13,7 +15,9 @@ public class ViewLoadController {
     UserDao userDao;
 
     @GetMapping("/main")
-    public String index(Model model){
+    public String index(Model model, HttpSession session){
+        System.out.println("하1234아");
+        model.addAttribute("userInfo", session.getAttribute("userInfo"));
         return "view/main";
     }
 
@@ -38,9 +42,9 @@ public class ViewLoadController {
         return "view/resource";
     }
 
-    @GetMapping("/resourceEdit")
+    @GetMapping("/resourceManage")
     public String resourceEdit(Model model) {
-        return "view/resourceEdit";
+        return "view/resourceManage";
     }
 
     @GetMapping("/gallery")

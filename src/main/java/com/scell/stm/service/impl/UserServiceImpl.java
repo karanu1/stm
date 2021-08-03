@@ -33,6 +33,7 @@ public class UserServiceImpl implements UserService {
             }
             else{ //이미 회원가입함
                 System.out.println("히히!현현!");
+                System.out.println(dto);
                 session.setAttribute("userInfo", dto);
             }
             System.out.println(userDto);
