@@ -1,15 +1,49 @@
-<div class="col-12 align-items-center justify-content-between mb-4">
-    <h2 class="h3 mb-0 text-gray-800">회비 등록
-        <!--<input type="button" value="회비 등록" style="float:right;font-size:15px"/>-->
-    </h2>
-</div>
 <div class="row">
-    <select name="tmpType">
-        <option label="타입"></option>
-        <option value="0">회비</option>
-        <option value="1">기부</option>
-        <option value="2">입금</option>
-        <option value="3">출금</option>
-    </select>
+    <div class="col-12 align-items-center justify-content-between mb-4">
+        <h2 class="h3 mb-0 text-gray-800">회비 관리
+            <!--<input type="button" value="회비 등록" style="float:right;font-size:15px"/>-->
+        </h2>
+    </div>
+
+    <div class="card col-12 mb-4" id="userRegister">
+        <div class="card-header">
+            사용자 사전 등록
+        </div>
+        <div class="card-body">
+            <form id="preRegisterForm">
+                <div class="form-group">
+                    <label for="name">이름</label>
+                    <input class="form-control" type="text" id="name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">핸드폰 번호</label>
+                    <input class="form-control" type="text" id="phoneNumber" name="phoneNumber">
+                </div>
+            </form>
+        </div>
+        <div class="card-footer" style="text-align-last: right;">
+            <button class="btn btn-secondary">등록</button>
+        </div>
+    </div>
+
+    <div clsss="col-12">
+        <div class="dropdown no-arrow mb-4">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="">
+                <a class="dropdown-item" href="#">회비</a>
+                <a class="dropdown-item" href="#">기부</a>
+                <a class="dropdown-item" href="#">입금</a>
+                <a class="dropdown-item" href="#">출금</a>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <input type="text" class="form-control form-control-user" placeholder="Email Address"/>
+            <input type="button" class="btn btn-secondary" value="원버튼" style="float:right;font-size:15px" onclick="duesDeposit()"/>
+        </div>
+
+    </div>
 
 </div>

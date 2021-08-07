@@ -52,6 +52,11 @@ public class ViewLoadController {
         return "view/gallery";
     }
 
+    @GetMapping("/mypage")
+    public String mypage(Model model){
+        return "view/mypage";
+    }
+
     @GetMapping("/board")
     public String board(Model model){
         return "view/board";

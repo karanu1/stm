@@ -1,0 +1,32 @@
+<script th:inline="javascript">
+    $(document).ready(function() {
+        /*<![CDATA[*/
+        var member = (/*[[ ${member} ]]*/);
+        console.log(member);
+        /*]]*/
+
+    });
+
+
+
+
+</script>
+
+<div class="row">
+
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">마이페이지</h1>
+    </div>
+
+    <div class="col-12 col-md-6 mb-4" th:each="list:${member}">
+        <div class="card border">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <img style="width:40px; height:40px; border-radius: 40%;" class="img-profile" th:src="${list.thumbnailImage}">
+                    <div style="padding-left:12px" th:text="${list.nickname}">뀨</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
